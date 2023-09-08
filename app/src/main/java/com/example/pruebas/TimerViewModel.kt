@@ -1,19 +1,25 @@
 package com.example.pruebas
 
+import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Build.VERSION_CODES
 import android.os.CountDownTimer
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import java.util.concurrent.TimeUnit
 
-class TimerViewModel:ViewModel() {
+class TimerViewModel(application: Application): AndroidViewModel(application) {
     private var countDownTimer: CountDownTimer? = null
+    private val workManager = WorkManager.getInstance(application)
 
     //var textView
     private var _timerLiveData = MutableLiveData<String>()
@@ -49,6 +55,7 @@ class TimerViewModel:ViewModel() {
 
             override fun onFinish() {
                 endTimer()
+                notify()
             }
         }
         countDownTimer?.start()
@@ -56,12 +63,16 @@ class TimerViewModel:ViewModel() {
 
     }
 
+    internal fun notify(){
+        workManager.enqueue(OneTimeWorkRequest.from(WorkerNotification::class.java))
+    }
     fun endTimer() {
         _progressFinish.postValue(true)
         _timerLiveData.postValue("00:00:00")
         _progressLiveData.postValue(0)
         countDownTimer?.cancel()
     }
+
 
     override fun onCleared() {
         super.onCleared()

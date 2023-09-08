@@ -140,14 +140,10 @@ class TimersActivity : AppCompatActivity() {
         timerViewModel.progressState.observe(this){state ->
             if (state){
                 Toast.makeText(this, "Timer Finalizado", Toast.LENGTH_SHORT).show()
-                val intent = Intent (this,NotificationService::class.java)
                 binding.cancelButton.visibility = View.GONE
-                startService(intent)
             }else{
                 Toast.makeText(this, "Timer iniciado", Toast.LENGTH_SHORT).show()
                 binding.cancelButton.visibility = View.VISIBLE
-                val intent = Intent (this,NotificationService::class.java)
-                startService(intent)
 
             }
         }
