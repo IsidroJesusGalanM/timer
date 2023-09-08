@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".TimersActivity">
+
+    <TextView
+        android:id="@+id/timerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cronometro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="24dp"
+        android:textColor="@color/black" />
+
+
+
+    <ProgressBar
+        android:id="@+id/progressTime"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/timer_circle_1"
+        tools:progress="40"
+        app:layout_constraintTop_toBottomOf="@id/timerTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+       />
+
+
+    <TextView
+        android:id="@+id/textViewTimeRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="00:00:00"
+        app:layout_constraintTop_toTopOf="@id/progressTime"
+        app:layout_constraintLeft_toLeftOf="@id/progressTime"
+        app:layout_constraintRight_toRightOf="@id/progressTime"
+        app:layout_constraintBottom_toBottomOf="@id/progressTime"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/progressTime"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/line_reference"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Horas"
+            android:layout_marginEnd="10dp"
+            android:textSize="20sp"
+            android:textAlignment="textEnd"
+            />
+
+        <EditText
+            android:id="@+id/hours"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:textSize="34sp"
+            android:background="@drawable/bg_edit_text_timer"
+            android:text="00"
+            android:padding="10dp"
+            android:layout_margin="4dp"
+            android:textAlignment="center"
+            android:inputType="number"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="34sp"
+            android:layout_margin="4dp"/>
+
+        <EditText
+            android:id="@+id/minutes"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:textSize="34sp"
+            android:background="@drawable/bg_edit_text_timer"
+            android:text="01"
+            android:padding="10dp"
+            android:layout_margin="4dp"
+            android:textAlignment="center"
+            android:inputType="number"
+            />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Minutos"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line_reference"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="80dp"
+        />
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startTemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line_reference"
+        android:background="@drawable/bg_button_start_timer"
+        android:layout_marginHorizontal="30dp"
+        android:text="Comenzar"
+        android:textAllCaps="false"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line_reference"
+        android:background="@drawable/bg_button_cancel_timer"
+        android:layout_marginHorizontal="30dp"
+        android:text="Cancelar"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:visibility="gone"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

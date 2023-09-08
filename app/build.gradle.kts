@@ -30,9 +30,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding{
+        enable = true
+    }
 }
 
 dependencies {
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+
+    implementation ("androidx.work:work-runtime-ktx:2.8.1")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
